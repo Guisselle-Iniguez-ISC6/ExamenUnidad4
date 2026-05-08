@@ -8,5 +8,11 @@
         <item>Maestra/Docente</item>
     </string-array>
 
+    <string-array name="roles_login">
+        <item>Administrador</item>
+        <item>Estudiante</item>
+        <item>Docente</item>
+    </string-array>
+
 
 </resources>

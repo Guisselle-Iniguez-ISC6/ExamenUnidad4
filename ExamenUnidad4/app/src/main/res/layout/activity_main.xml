@@ -1,19 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="30dp"
+    android:background="#F2F2F2">
+    <ImageView
+    android:id="@+id/Logo"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:src="@drawable/logo"
+    android:layout_marginBottom="30dp"
+    android:contentDescription="logo" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Bienvenido al Sistema"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#660000"
+        android:layout_marginBottom="20dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Spinner
+        android:id="@+id/spinnerRol"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:elevation="3dp"
+        android:layout_marginBottom="15dp"
+        android:entries="@array/roles_login" />
+
+    <EditText
+        android:id="@+id/etPassLogin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:background="@android:color/white"
+        android:paddingLeft="15dp"
+        android:elevation="3dp"
+        android:layout_marginBottom="25dp" />
+
+    <Button
+        android:id="@+id/btnEntrar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="INICIAR SESIÓN"
+        android:backgroundTint="#660000"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        app:cornerRadius="10dp"
+        android:onClick="validarLogin" />
+
+</LinearLayout>
