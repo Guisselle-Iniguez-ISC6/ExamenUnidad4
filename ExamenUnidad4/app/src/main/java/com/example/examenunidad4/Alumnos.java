@@ -1,6 +1,7 @@
 package com.example.examenunidad4;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,14 +9,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
-import java.util.ArrayList;
 
 public class Alumnos extends AppCompatActivity {
-    // Actualizamos los nombres para que coincidan con el nuevo XML
-    private EditText nomCompleto, password;
-    private Spinner spinnerTipo;
+
+    private EditText nomCompleto, numControl, carrera;
+
     private CheckBox cbProg, cbBD, cbIA, cbRedes;
 
     @Override
@@ -23,10 +22,9 @@ public class Alumnos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alumnos_activity);
 
-        // Enlace de componentes
         nomCompleto = findViewById(R.id.nomCompleto);
-        password = findViewById(R.id.password);
-        spinnerTipo = findViewById(R.id.spinnerTipo);
+        numControl = findViewById(R.id.password); // usa tu id actual
+        carrera = findViewById(R.id.carrera);
 
         cbProg = findViewById(R.id.cbProgramacion);
         cbBD = findViewById(R.id.cbBaseDatos);
@@ -34,94 +32,211 @@ public class Alumnos extends AppCompatActivity {
         cbRedes = findViewById(R.id.cbRedes);
     }
 
+    // GUARDAR ALUMNO
     public void GuardarAlum(View v) {
-        AdminSQLite admin = new AdminSQLite(this, "controlEscolar", null, 1);
+
+        AdminSQLite admin = new AdminSQLite(this);
         SQLiteDatabase bd = admin.getWritableDatabase();
 
-        String nombre = nomCompleto.getText().toString();
-        String pass = password.getText().toString();
-        String tipo = spinnerTipo.getSelectedItem().toString();
+        String nombre = nomCompleto.getText().toString().trim();
+        String control = numControl.getText().toString().trim();
+        String carreraTexto = carrera.getText().toString().trim();
 
-        // 1. VALIDACIÓN DE CONTRASEÑA SEGÚN TIPO
-        if (tipo.equals("Maestra/Docente")) {
-            // 2 letras y 8 números
-            if (!pass.matches("^[a-zA-Z]{2}[0-9]{8}$")) {
-                Toast.makeText(this, "Maestra: La clave debe tener 2 letras y 8 números", Toast.LENGTH_LONG).show();
-                return;
-            }
-        } else {
-            // 1 letra y 8 números (Alumno)
-            if (!pass.matches("^[a-zA-Z]{1}[0-9]{8}$")) {
-                Toast.makeText(this, "Alumno: La clave debe tener 1 letra y 8 números", Toast.LENGTH_LONG).show();
-                return;
-            }
+        if (nombre.isEmpty()
+                || control.isEmpty()
+                || carreraTexto.isEmpty()) {
+
+            Toast.makeText(
+                    this,
+                    "Completa todos los campos",
+                    Toast.LENGTH_SHORT
+            ).show();
+
+            return;
         }
 
-        // 2. LÓGICA DE MATERIAS (Solo las seleccionadas)
-        String materiasSeleccionadas = "";
-        if (cbProg.isChecked()) materiasSeleccionadas += "Programación ";
-        if (cbBD.isChecked()) materiasSeleccionadas += "Bases de Datos ";
-        if (cbIA.isChecked()) materiasSeleccionadas += "IA ";
-        if (cbRedes.isChecked()) materiasSeleccionadas += "Redes ";
+        ContentValues registro = new ContentValues();
 
-        if (!nombre.isEmpty() && !pass.isEmpty()) {
-            ContentValues registro = new ContentValues();
-            registro.put("nombre", nombre);
-            registro.put("tipo", tipo);
-            registro.put("password", pass);
-            registro.put("materias", materiasSeleccionadas.trim());
+        registro.put(
+                "numcontrol",
+                Integer.parseInt(control)
+        );
 
-            // Nota: Asegúrate de que tu tabla en AdminSQLite tenga estas columnas
-            bd.insert("usuarios", null, registro);
-            bd.close();
+        registro.put(
+                "nombre",
+                nombre
+        );
+
+        registro.put(
+                "carrera",
+                carreraTexto
+        );
+
+        long resultado = bd.insert(
+                "alumnos",
+                null,
+                registro
+        );
+
+        // MATERIAS SELECCIONADAS
+        registrarMateriaAlumno(bd, control);
+
+        if (resultado != -1) {
+
+            Toast.makeText(
+                    this,
+                    "Alumno registrado",
+                    Toast.LENGTH_SHORT
+            ).show();
 
             limpiarCampos();
-            Toast.makeText(this, "Registro exitoso en la base de datos", Toast.LENGTH_SHORT).show();
+
         } else {
-            Toast.makeText(this, "Por favor, llena todos los campos", Toast.LENGTH_SHORT).show();
+
+            Toast.makeText(
+                    this,
+                    "Error al registrar",
+                    Toast.LENGTH_SHORT
+            ).show();
         }
-    }
 
-    // Método de consulta simplificado para el nuevo diseño
-    public void consultaNumControl(View v) {
-        AdminSQLite admin = new AdminSQLite(this, "controlEscolar", null, 1);
-        SQLiteDatabase bd = admin.getReadableDatabase();
-        String nombreABuscar = nomCompleto.getText().toString();
-
-        if (!nombreABuscar.isEmpty()) {
-            Cursor fila = bd.rawQuery("select tipo, password, materias from usuarios where nombre='" + nombreABuscar + "'", null);
-
-            if (fila.moveToFirst()) {
-                password.setText(fila.getString(1));
-                // Aquí podrías marcar los checkboxes basándote en fila.getString(2)
-                Toast.makeText(this, "Usuario encontrado como: " + fila.getString(0), Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "No se encontró el registro", Toast.LENGTH_SHORT).show();
-            }
-            fila.close();
-        }
         bd.close();
     }
 
+    // REGISTRAR MATERIAS DEL ALUMNO
+    private void registrarMateriaAlumno(SQLiteDatabase bd, String control) {
+
+        int alumnoId = Integer.parseInt(control);
+
+        registrarSiExiste(bd, alumnoId, cbProg, 1);
+        registrarSiExiste(bd, alumnoId, cbBD, 2);
+        registrarSiExiste(bd, alumnoId, cbIA, 3);
+        registrarSiExiste(bd, alumnoId, cbRedes, 4);
+    }
+
+    private void registrarSiExiste(SQLiteDatabase bd,
+                                   int alumnoId,
+                                   CheckBox check,
+                                   int materiaId) {
+
+        if (check.isChecked()) {
+
+            ContentValues valores = new ContentValues();
+
+            valores.put("alumno_id", alumnoId);
+            valores.put("materia_id", materiaId);
+            valores.put("calificacion", 0);
+
+            bd.insert(
+                    "calificaciones",
+                    null,
+                    valores
+            );
+        }
+    }
+
+    // CONSULTAR
+    public void consultaNumControl(View v) {
+
+        AdminSQLite admin = new AdminSQLite(this);
+
+        SQLiteDatabase bd = admin.getReadableDatabase();
+
+        String control = numControl.getText().toString();
+
+        Cursor fila = bd.rawQuery(
+                "SELECT nombre, carrera " +
+                        "FROM alumnos " +
+                        "WHERE numcontrol=" + control,
+                null
+        );
+
+        if (fila.moveToFirst()) {
+
+            nomCompleto.setText(
+                    fila.getString(0)
+            );
+
+            carrera.setText(
+                    fila.getString(1)
+            );
+
+            Toast.makeText(
+                    this,
+                    "Alumno encontrado",
+                    Toast.LENGTH_SHORT
+            ).show();
+
+        } else {
+
+            Toast.makeText(
+                    this,
+                    "No existe",
+                    Toast.LENGTH_SHORT
+            ).show();
+        }
+
+        fila.close();
+        bd.close();
+    }
+
+    // ELIMINAR
+    public void eliminaNumControl(View v) {
+
+        AdminSQLite admin = new AdminSQLite(this);
+
+        SQLiteDatabase bd = admin.getWritableDatabase();
+
+        String control = numControl.getText().toString();
+
+        int cantidad = bd.delete(
+                "alumnos",
+                "numcontrol=" + control,
+                null
+        );
+
+        bd.delete(
+                "calificaciones",
+                "alumno_id=" + control,
+                null
+        );
+
+        bd.close();
+
+        limpiarCampos();
+
+        if (cantidad == 1) {
+
+            Toast.makeText(
+                    this,
+                    "Alumno eliminado",
+                    Toast.LENGTH_SHORT
+            ).show();
+
+        } else {
+
+            Toast.makeText(
+                    this,
+                    "Alumno no encontrado",
+                    Toast.LENGTH_SHORT
+            ).show();
+        }
+    }
+
+    public void consultarNom(View v) {
+        consultaNumControl(v);
+    }
+
+    // LIMPIAR
     private void limpiarCampos() {
+
         nomCompleto.setText("");
-        password.setText("");
+        numControl.setText("");
+        carrera.setText("");
+
         cbProg.setChecked(false);
         cbBD.setChecked(false);
         cbIA.setChecked(false);
         cbRedes.setChecked(false);
-    }
-
-    // Implementación rápida de los otros métodos siguiendo tu lógica original...
-    public void consultarNom(View v) { consultaNumControl(v); }
-
-    public void eliminaNumControl(View v) {
-        AdminSQLite admin = new AdminSQLite(this, "controlEscolar", null, 1);
-        SQLiteDatabase bd = admin.getWritableDatabase();
-        String nombre = nomCompleto.getText().toString();
-        int cant = bd.delete("usuarios", "nombre='" + nombre + "'", null);
-        bd.close();
-        limpiarCampos();
-        if (cant == 1) Toast.makeText(this, "Eliminado correctamente", Toast.LENGTH_SHORT).show();
     }
 }

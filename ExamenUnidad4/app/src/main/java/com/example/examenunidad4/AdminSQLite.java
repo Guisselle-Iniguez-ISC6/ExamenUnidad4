@@ -21,16 +21,37 @@ public class AdminSQLite extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
+        // ALUMNOS
         db.execSQL(
-                "CREATE TABLE alumnos (" + "numcontrol INTEGER PRIMARY KEY, " + "nombre TEXT, " + "carrera TEXT)"
+                "CREATE TABLE alumnos(" +
+                        "numcontrol INTEGER PRIMARY KEY," +
+                        "nombre TEXT," +
+                        "carrera TEXT)"
         );
 
+        // DOCENTES
         db.execSQL(
-                "CREATE TABLE docentes (" + "num_empleado INTEGER PRIMARY KEY, " + "nombre TEXT, " + "direccion TEXT)"
+                "CREATE TABLE docentes(" +
+                        "num_empleado INTEGER PRIMARY KEY," +
+                        "nombre TEXT," +
+                        "direccion TEXT)"
         );
 
+        // MATERIAS
         db.execSQL(
-                "CREATE TABLE materias (" + "clave INTEGER PRIMARY KEY, " + "nombre_materia TEXT)"
+                "CREATE TABLE materias(" +
+                        "clave INTEGER PRIMARY KEY," +
+                        "nombre_materia TEXT," +
+                        "docente_id INTEGER)"
+        );
+
+        // CALIFICACIONES
+        db.execSQL(
+                "CREATE TABLE calificaciones(" +
+                        "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "alumno_id INTEGER," +
+                        "materia_id INTEGER," +
+                        "calificacion REAL)"
         );
     }
 
