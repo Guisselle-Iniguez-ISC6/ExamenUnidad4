@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">04-Ejemplo_interfaz_cremosa</string>
+    <string name="Nombre">Dame tu nombre: </string>
+    <string name="Aceptar">Saludo</string>
+    <string name="Adios">Edad en meses: </string>
+    <string name="title_activity_greeting">"Siguiente pantalla"</string>
+</resources>

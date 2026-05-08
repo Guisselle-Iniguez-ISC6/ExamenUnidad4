@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo">
+
+
+    <TextView
+        android:id="@+id/TxtSaludo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:fontFamily=""
+        android:gravity="center_horizontal"
+        android:shadowColor="#757562"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="2"
+        android:text="Número Mágico"
+        android:textAlignment="center"
+        android:textColor="#FBFBFB"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/TxtPide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily=""
+        android:shadowColor="#D2E6E7"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="8"
+        android:text="Introduce un número:"
+        android:textColor="#0A9946"
+        android:textSize="30sp"
+        android:textStyle="bold"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="220dp"
+        android:layout_marginStart="55dp" />
+
+    <EditText
+        android:id="@+id/Numero"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint=""
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textColor="#011719"
+        android:textSize="25sp"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="260dp"
+        android:layout_marginStart="60dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:orientation="vertical"
+        android:gravity="start"
+        android:paddingLeft="30dp"
+        android:paddingTop="15dp"
+        android:paddingRight="30dp"
+        android:paddingBottom="15dp">
+
+        <Button
+            android:id="@+id/btnJugar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="#53708E"
+            android:fontFamily=""
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="Jugar"
+            android:textColor="#FFFFFF" />
+        <Button
+            android:id="@+id/btnLimpiar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="#53708E"
+            android:fontFamily=""
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="Limpiar"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/resOportunidades"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text=""
+            android:textColor="#DEDADA"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/resRespuesta"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text=""
+            android:textColor="#DEDADA"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/resResultado"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text=""
+            android:textColor="#DEDADA"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>
+

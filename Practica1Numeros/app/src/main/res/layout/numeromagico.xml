@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_4">
+
+    <TextView
+        android:id="@+id/TxtTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/aclonica"
+        android:gravity="center_horizontal"
+        android:shadowColor="#011719"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="2"
+        android:text="Amigos"
+        android:textAlignment="center"
+        android:textColor="#011719"
+        android:textSize="60sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/TxtPide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/aclonica"
+        android:shadowColor="#011719"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="8"
+        android:text="Dame un numero:"
+        android:textColor="#C11007"
+        android:textSize="30sp"
+        android:textStyle="bold"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="160dp"
+        android:layout_marginStart="50dp" />
+
+    <EditText
+        android:id="@+id/primerNumero"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="Primer numero..."
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textColor="#011719"
+        android:textSize="25sp"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="200dp"
+        android:layout_marginStart="80dp" />
+
+    <TextView
+        android:id="@+id/TxtPide2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/aclonica"
+        android:shadowColor="#011719"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="8"
+        android:text="Dame otro numero:"
+        android:textColor="#C11007"
+        android:textSize="30sp"
+        android:textStyle="bold"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="260dp"
+        android:layout_marginStart="40dp" />
+
+    <EditText
+        android:id="@+id/segundoNumero"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="Segundo numero..."
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textColor="#011719"
+        android:textSize="25sp"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="320dp"
+        android:layout_marginStart="80dp" />
+
+
+    <Button
+        android:id="@+id/btnCalcula"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="¿Son Amigos?"
+        android:textColor="#FAFAF9"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/aclonica"
+        android:textSize="18sp"
+
+        android:layout_marginTop="410dp"
+        android:layout_marginStart="100dp"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:id="@+id/flechaizq"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="480dp"
+        android:layout_marginStart="-70dp"
+        android:src="@drawable/flecha2" />
+
+    <ImageView
+        android:id="@+id/flechadere"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="480dp"
+        android:layout_marginStart="190dp"
+        android:src="@drawable/flecha1" />
+
+
+</RelativeLayout>

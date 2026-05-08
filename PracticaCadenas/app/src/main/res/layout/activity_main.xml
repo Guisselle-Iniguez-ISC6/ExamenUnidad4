@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img">
+
+
+    <TextView
+        android:id="@+id/TxtSaludo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:fontFamily="@font/alfa_slab_one"
+        android:gravity="center_horizontal"
+        android:shadowColor="#757562"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="2"
+        android:text="Cadenas"
+        android:textAlignment="center"
+        android:textColor="#282821"
+        android:textSize="60sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/TxtPide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alfa_slab_one"
+        android:shadowColor="#011719"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="8"
+        android:text="Dame un numero:"
+        android:textColor="#0A9946"
+        android:textSize="30sp"
+        android:textStyle="bold"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="220dp"
+        android:layout_marginStart="55dp" />
+
+    <EditText
+        android:id="@+id/Palabra"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint=""
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textColor="#011719"
+        android:textSize="25sp"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="260dp"
+        android:layout_marginStart="60dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:orientation="vertical"
+        android:gravity="start"
+        android:paddingLeft="30dp"
+        android:paddingTop="15dp"
+        android:paddingRight="30dp"
+        android:paddingBottom="15dp">
+
+        <Button
+            android:id="@+id/btnPalindromo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="#076E32"
+            android:fontFamily="@font/alfa_slab_one"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="Palindromo"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/resPalindromo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="---"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnVocales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="#076E32"
+            android:fontFamily="@font/alfa_slab_one"
+            android:minWidth="0dp"
+            android:text="Vocales"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/resVocales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="---"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnConsonantes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="#076E32"
+            android:fontFamily="@font/alfa_slab_one"
+            android:minWidth="0dp"
+            android:text="Consonantes"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/resConsonante"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="---"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnPentavocalica"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#076E32"
+            android:fontFamily="@font/alfa_slab_one"
+            android:minWidth="0dp"
+            android:text="Pentavocalica"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/resPentavocalica"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="---"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
+

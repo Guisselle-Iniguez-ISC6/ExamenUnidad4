@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/img_1"> <TextView
+    android:id="@+id/LblNombre"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Dame tu nombre:"
+    android:textColor="#FF0000"
+    android:textSize="32sp"
+    android:textStyle="bold"
+    android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/TxtNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/LblNombre"
+        android:inputType="textPersonName"/>
+
+    <Button
+        android:id="@+id/BtnSaludo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saludo"
+        android:textAllCaps="false"
+        android:backgroundTint="#3F51B5"
+        android:layout_below="@id/TxtNombre"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/LblEdad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dame tu edad:"
+        android:textColor="#800080"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        android:layout_below="@id/BtnSaludo"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/TxtEdad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/LblEdad"
+        android:inputType="number"/>
+
+    <TextView
+        android:id="@+id/LblMeses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edad en meses: "
+        android:textColor="#0000FF"
+        android:textSize="22sp"
+        android:textStyle="bold|italic"
+        android:layout_below="@id/TxtEdad"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/TxtMeses"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TxtEdad"
+        android:layout_toEndOf="@id/LblMeses"
+        android:layout_alignBaseline="@id/LblMeses"
+        android:textColor="#0000FF"
+        android:textSize="30sp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textStyle="italic"
+        android:inputType="number"/>
+
+    <ImageButton
+        android:id="@+id/BtnMeses"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/TxtMeses"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#3F51B5"
+        android:scaleType="fitCenter"
+        android:padding="10dp"
+        android:src="@drawable/img" />
+
+
+</RelativeLayout>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_4">
+
+    <TextView
+        android:id="@+id/TxtSaludo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/aclonica"
+        android:gravity="center_horizontal"
+        android:shadowColor="#011719"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="2"
+        android:text="Numeros\n Primos"
+        android:textAlignment="center"
+        android:textColor="#011719"
+        android:textSize="60sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/TxtPide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="220dp"  android:fontFamily="@font/aclonica"
+        android:gravity="center_horizontal"
+        android:shadowColor="#011719"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="8"
+        android:text="Dame un numero:"
+        android:textAlignment="center"
+        android:textColor="#C11007"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editNumero"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TxtPide"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:hint="Pon un numero..."
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textColor="#011719"
+        android:textSize="25sp" />
+
+
+    <Button
+        android:id="@+id/btnCalcula"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="¿Es Primo?"
+        android:textColor="#FAFAF9"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/aclonica"
+        android:textSize="18sp"
+
+        android:layout_marginTop="390dp"
+        android:layout_marginStart="100dp"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+
+        <ImageView
+            android:id="@+id/flechaizq"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="480dp"
+            android:layout_marginStart="-70dp"
+            android:src="@drawable/flecha2" />
+
+        <ImageView
+            android:id="@+id/flechadere"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="480dp"
+            android:layout_marginStart="190dp"
+            android:src="@drawable/flecha1" />
+
+
+</RelativeLayout>
