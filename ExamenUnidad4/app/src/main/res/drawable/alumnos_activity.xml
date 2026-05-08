@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="#FFFFFF">
+
+    <EditText
+        android:id="@+id/numCon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingrese número de control"
+        android:layout_marginBottom="15dp"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/nomAlum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingrese nombre del estudiante"
+        android:layout_marginBottom="15dp"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/telAlum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingrese número de teléfono"
+        android:layout_marginBottom="30dp"
+        android:inputType="phone" />
+
+    <Button
+        android:id="@+id/btnGuardar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="Guardar"
+        android:textAllCaps="false"
+        android:backgroundTint="#176D8C"
+        android:onClick="GuardarAlum"
+        app:cornerRadius="28dp"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/btnConsultarPorNombre"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="Consultar por numero de Control"
+        android:textAllCaps="false"
+        android:backgroundTint="#176D8C"
+        android:onClick="consultaNumControl"
+        app:cornerRadius="28dp"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/btnConsultarNom"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="Consulta por nombre"
+        android:textAllCaps="false"
+        android:backgroundTint="#176D8C"
+        android:onClick="consultarNom"
+        app:cornerRadius="28dp"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/btnEliminar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="Eliminar"
+        android:textAllCaps="false"
+        android:backgroundTint="#176D8C"
+        android:onClick="eliminaNumControl"
+        app:cornerRadius="28dp"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/btnModificar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="Modificar"
+        android:textAllCaps="false"
+        android:backgroundTint="#176D8C"
+        android:onClick="modificaAlumno"
+        app:cornerRadius="28dp" />
+
+</LinearLayout>
