@@ -3,108 +3,110 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/fondo_gris">
+    android:background="#F2F2F2">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="20dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Registro Académico"
+            android:text="Registro de Usuarios"
             android:textSize="22sp"
             android:textStyle="bold"
-            android:textColor="@color/tinto_premium"
+            android:textColor="#660000"
             android:layout_gravity="center"
-            android:layout_marginBottom="25dp"/>
+            android:layout_marginBottom="20dp" />
 
         <EditText
             android:id="@+id/nomCompleto"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:hint="Nombre Completo"
-            android:background="@android:color/white"
-            android:paddingLeft="15dp"
-            android:elevation="2dp"
-            android:layout_marginBottom="15dp"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:layout_marginBottom="10dp" />
+
+        <!-- CONTENEDOR PARA EL OJITO DE CONTRASEÑA -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="#660000">
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contraseña (Letras + Números)"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tipo de usuario"
-            android:textColor="@color/verde_detalle"
-            android:textStyle="bold"
-            android:textSize="12sp"
+            android:text="Tipo de Usuario:"
             android:layout_marginBottom="5dp" />
 
         <Spinner
             android:id="@+id/spinnerTipo"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@android:color/white"
-            android:elevation="2dp"
-            android:layout_marginBottom="15dp"
-            android:entries="@array/tipos_usuario" />
-
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Contraseña segura"
-            android:background="@android:color/white"
-            android:paddingLeft="15dp"
-            android:elevation="2dp"
-            android:layout_marginBottom="20dp"
-            android:inputType="textPassword" />
+            android:layout_height="wrap_content"
+            android:entries="@array/tipos_usuario"
+            android:layout_marginBottom="15dp" />
 
         <TextView
+            android:id="@+id/tvTituloMaterias"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Materias Asignadas"
-            android:textColor="@color/texto_oscuro"
+            android:text="Materias:"
             android:textStyle="bold"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="5dp" />
 
-        <GridLayout
+        <!-- CONTENEDOR DINÁMICO PARA MATERIAS -->
+        <LinearLayout
+            android:id="@+id/layoutMaterias"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnCount="2"
-            android:layout_marginBottom="25dp">
-
-            <CheckBox android:id="@+id/cbProgramacion" android:text="Programación" android:buttonTint="@color/verde_detalle" />
-            <CheckBox android:id="@+id/cbBaseDatos" android:text="Bases de Datos" android:buttonTint="@color/verde_detalle" />
-            <CheckBox android:id="@+id/cbIA" android:text="Inteligencia A." android:buttonTint="@color/verde_detalle" />
-            <CheckBox android:id="@+id/cbRedes" android:text="Redes" android:buttonTint="@color/verde_detalle" />
-        </GridLayout>
+            android:orientation="vertical">
+        </LinearLayout>
 
         <Button
-            android:id="@+id/btnGuardar"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:text="GUARDAR"
-            android:textStyle="bold"
-            android:backgroundTint="@color/tinto_premium"
-            android:textColor="@android:color/white"
-            android:onClick="GuardarAlum"
-            app:cornerRadius="8dp"
-            android:layout_marginBottom="12dp"
-            android:elevation="4dp"/>
+            android:layout_height="wrap_content"
+            android:text="GUARDAR NUEVO"
+            android:backgroundTint="#660000"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="20dp"
+            android:onClick="GuardarAlum" />
 
         <Button
-            android:id="@+id/btnConsultar"
+            android:id="@+id/btnModificar"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:text="Consultar"
-            android:backgroundTint="#FFFFFF"
-            android:textColor="@color/tinto_premium"
-            android:onClick="consultaNumControl"
-            app:strokeColor="@color/tinto_premium"
-            app:strokeWidth="1dp"
-            app:cornerRadius="8dp" />
+            android:layout_height="wrap_content"
+            android:text="MODIFICAR SELECCIONADO"
+            android:backgroundTint="#FF8F00"
+            android:textColor="#FFFFFF"
+            android:onClick="ModificarAlum" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CONSULTAR"
+            android:backgroundTint="#660000"
+            android:textColor="#FFFFFF"
+            android:onClick="consultaNumControl" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ELIMINAR"
+            android:backgroundTint="#660000"
+            android:textColor="#FFFFFF"
+            android:onClick="eliminaNumControl" />
 
     </LinearLayout>
 </ScrollView>

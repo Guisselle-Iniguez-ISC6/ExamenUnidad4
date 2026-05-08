@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F2F2F2"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvTituloMateria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Materia: Programación"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#660000"
+        android:gravity="center"
+        android:layout_marginBottom="10dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Listado de alumnos inscritos"
+        android:textColor="#2E7D32"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:layout_marginBottom="20dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#D3D3D3"
+        android:layout_marginBottom="10dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/contenedorListaAlumnos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnFinalizar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="VOLVER A MIS MATERIAS"
+        android:backgroundTint="#660000"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="10dp"
+        app:cornerRadius="8dp"
+        android:onClick="finalizarCalificacion" />
+
+</LinearLayout>

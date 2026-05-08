@@ -22,8 +22,8 @@ public class Materias extends AppCompatActivity {
     // Lista de nombres para el Spinner
     private ArrayList<String> listaDocentes;
 
-    // Lista de IDs reales de docentes
-    private ArrayList<Integer> listaIdsDocentes;
+    // Lista de identificadores de docentes (usaremos el nombre como ID)
+    private ArrayList<String> listaIdsDocentes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,24 +46,22 @@ public class Materias extends AppCompatActivity {
         listaDocentes = new ArrayList<>();
         listaIdsDocentes = new ArrayList<>();
 
+        // Consulta para obtener los nombres de los docentes
         Cursor fila = bd.rawQuery(
-                "SELECT num_empleado, nombre FROM docentes",
+                "SELECT nombre FROM usuarios WHERE tipo='Maestra/Docente'",
                 null
         );
 
         if (fila.moveToFirst()) {
 
             do {
+                String nombreDocente = fila.getString(0);
+                
+                // GUARDAR NOMBRE COMO IDENTIFICADOR
+                listaIdsDocentes.add(nombreDocente);
 
-                // GUARDAR ID
-                listaIdsDocentes.add(
-                        fila.getInt(0)
-                );
-
-                // GUARDAR NOMBRE
-                listaDocentes.add(
-                        fila.getString(1)
-                );
+                // GUARDAR NOMBRE PARA MOSTRAR
+                listaDocentes.add(nombreDocente);
 
             } while (fila.moveToNext());
 
@@ -120,18 +118,17 @@ public class Materias extends AppCompatActivity {
         // POSICIÓN DEL DOCENTE SELECCIONADO
         int posicion = spinnerDocentes.getSelectedItemPosition();
 
-        // OBTENER ID REAL DEL DOCENTE
-        int docenteId = listaIdsDocentes.get(posicion);
+        // OBTENER IDENTIFICADOR DEL DOCENTE
+        String docenteNombre = listaIdsDocentes.get(posicion);
 
         AdminSQLite admin = new AdminSQLite(this);
         SQLiteDatabase bd = admin.getWritableDatabase();
 
         ContentValues registro = new ContentValues();
 
-        registro.put("clave", Integer.parseInt(clave));
+        registro.put("clave", clave);
         registro.put("nombre_materia", nombre);
-
-        registro.put("docente_id", docenteId);
+        registro.put("docente_asignado", docenteNombre);
 
         long resultado = bd.insert(
                 "materias",
@@ -154,7 +151,7 @@ public class Materias extends AppCompatActivity {
 
             Toast.makeText(
                     this,
-                    "Error al registrar",
+                    "Error al registrar. La clave podría estar duplicada.",
                     Toast.LENGTH_SHORT
             ).show();
         }

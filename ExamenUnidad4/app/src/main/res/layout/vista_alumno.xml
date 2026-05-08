@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="#F2F2F2">
+
+    <TextView
+        android:id="@+id/tvBienvenidaAlum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¡Bienvenida, Guisselle!"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#660000"
+        android:layout_marginBottom="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tu rendimiento académico"
+        android:textColor="#2E7D32"
+        android:textSize="14sp"
+        android:layout_marginBottom="30dp" />
+
+    <TableLayout
+        android:id="@+id/tablaCalificaciones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1"
+        android:background="@android:color/white"
+        android:elevation="4dp"
+        android:padding="10dp">
+
+        <TableRow android:background="#660000" android:padding="8dp">
+            <TextView android:text="Materia" android:textColor="#FFFFFF" android:textStyle="bold" android:layout_marginEnd="10dp"/>
+            <TextView android:text="Calificación" android:textColor="#FFFFFF" android:textStyle="bold" android:gravity="center"/>
+        </TableRow>
+
+    </TableLayout>
+
+</LinearLayout>

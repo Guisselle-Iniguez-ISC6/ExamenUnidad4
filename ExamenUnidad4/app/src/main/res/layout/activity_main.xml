@@ -7,13 +7,14 @@
     android:gravity="center"
     android:padding="30dp"
     android:background="#F2F2F2">
+
     <ImageView
-    android:id="@+id/Logo"
-    android:layout_width="150dp"
-    android:layout_height="150dp"
-    android:src="@drawable/logo"
-    android:layout_marginBottom="30dp"
-    android:contentDescription="logo" />
+        android:id="@+id/Logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/logo"
+        android:layout_marginBottom="30dp"
+        android:contentDescription="logo" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -24,6 +25,16 @@
         android:textColor="#660000"
         android:layout_marginBottom="20dp"/>
 
+    <EditText
+        android:id="@+id/etUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Nombre de Usuario"
+        android:background="@android:color/white"
+        android:paddingLeft="15dp"
+        android:elevation="3dp"
+        android:layout_marginBottom="15dp" />
+
     <Spinner
         android:id="@+id/spinnerRol"
         android:layout_width="match_parent"
@@ -33,16 +44,25 @@
         android:layout_marginBottom="15dp"
         android:entries="@array/roles_login" />
 
-    <EditText
-        android:id="@+id/etPassLogin"
+    <!-- CONTENEDOR PARA EL OJITO DE CONTRASEÑA EN LOGIN -->
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        android:background="@android:color/white"
-        android:paddingLeft="15dp"
-        android:elevation="3dp"
-        android:layout_marginBottom="25dp" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="#660000"
+        app:hintEnabled="false">
+
+        <EditText
+            android:id="@+id/etPassLogin"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:background="@android:color/white"
+            android:paddingLeft="15dp"
+            android:elevation="3dp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnEntrar"
