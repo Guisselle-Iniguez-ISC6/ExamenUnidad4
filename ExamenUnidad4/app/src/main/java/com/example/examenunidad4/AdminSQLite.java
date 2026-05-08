@@ -21,4 +21,12 @@ public class AdminSQLite extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        // Tabla de usuarios (alumnos/docentes)
+        db.execSQL("create table usuarios(nombre text primary key, tipo text, password text, materias text)");
+
+        // Tabla de materias
+        db.execSQL("create table materias(clave text primary key, nombre_materia text, docente_asignado text)");
+    }
 }

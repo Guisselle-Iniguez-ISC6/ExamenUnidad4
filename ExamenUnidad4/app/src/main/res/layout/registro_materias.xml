@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="25dp"
+    android:background="#F2F2F2">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registro de Materias"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#660000"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"/>
+
+    <EditText
+        android:id="@+id/etNombreMateria"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Nombre de la Materia"
+        android:background="@android:color/white"
+        android:paddingLeft="15dp"
+        android:elevation="2dp"
+        android:layout_marginBottom="15dp"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/etClaveMateria"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Clave (Ej: PROG101)"
+        android:background="@android:color/white"
+        android:paddingLeft="15dp"
+        android:elevation="2dp"
+        android:layout_marginBottom="20dp"
+        android:inputType="textCapCharacters" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Asignar Profesor:"
+        android:textColor="#2E7D32"
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp" />
+
+    <Spinner
+        android:id="@+id/spinnerDocentes"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:elevation="2dp"
+        android:layout_marginBottom="30dp" />
+
+    <Button
+        android:id="@+id/btnGuardarMateria"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="REGISTRAR MATERIA"
+        android:backgroundTint="#660000"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        app:cornerRadius="8dp"
+        android:onClick="registrarMateria" />
+
+</LinearLayout>
