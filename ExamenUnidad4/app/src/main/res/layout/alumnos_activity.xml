@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo_gris">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registro Académico"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/tinto_premium"
+            android:layout_gravity="center"
+            android:layout_marginBottom="25dp"/>
+
+        <EditText
+            android:id="@+id/nomCompleto"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Nombre Completo"
+            android:background="@android:color/white"
+            android:paddingLeft="15dp"
+            android:elevation="2dp"
+            android:layout_marginBottom="15dp"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tipo de usuario"
+            android:textColor="@color/verde_detalle"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:layout_marginBottom="5dp" />
+
+        <Spinner
+            android:id="@+id/spinnerTipo"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@android:color/white"
+            android:elevation="2dp"
+            android:layout_marginBottom="15dp"
+            android:entries="@array/tipos_usuario" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Contraseña segura"
+            android:background="@android:color/white"
+            android:paddingLeft="15dp"
+            android:elevation="2dp"
+            android:layout_marginBottom="20dp"
+            android:inputType="textPassword" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Materias Asignadas"
+            android:textColor="@color/texto_oscuro"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:layout_marginBottom="25dp">
+
+            <CheckBox android:id="@+id/cbProgramacion" android:text="Programación" android:buttonTint="@color/verde_detalle" />
+            <CheckBox android:id="@+id/cbBaseDatos" android:text="Bases de Datos" android:buttonTint="@color/verde_detalle" />
+            <CheckBox android:id="@+id/cbIA" android:text="Inteligencia A." android:buttonTint="@color/verde_detalle" />
+            <CheckBox android:id="@+id/cbRedes" android:text="Redes" android:buttonTint="@color/verde_detalle" />
+        </GridLayout>
+
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="GUARDAR"
+            android:textStyle="bold"
+            android:backgroundTint="@color/tinto_premium"
+            android:textColor="@android:color/white"
+            android:onClick="GuardarAlum"
+            app:cornerRadius="8dp"
+            android:layout_marginBottom="12dp"
+            android:elevation="4dp"/>
+
+        <Button
+            android:id="@+id/btnConsultar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Consultar"
+            android:backgroundTint="#FFFFFF"
+            android:textColor="@color/tinto_premium"
+            android:onClick="consultaNumControl"
+            app:strokeColor="@color/tinto_premium"
+            app:strokeWidth="1dp"
+            app:cornerRadius="8dp" />
+
+    </LinearLayout>
+</ScrollView>

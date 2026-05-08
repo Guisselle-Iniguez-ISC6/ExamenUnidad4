@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">ExamenUnidad4</string>
+    <color name="fondo_gris">#F2F2F2</color>
+    <color name="tinto_premium">#660000</color> <color name="verde_detalle">#2E7D32</color> <color name="texto_oscuro">#333333</color>
+
+    <string-array name="tipos_usuario">
+        <item>Alumno</item>
+        <item>Maestra/Docente</item>
+    </string-array>
+
+
 </resources>
