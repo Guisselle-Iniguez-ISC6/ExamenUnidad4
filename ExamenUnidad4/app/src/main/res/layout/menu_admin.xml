@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="30dp"
+    android:background="#F2F2F2">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Panel de Administración"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#660000"
+        android:layout_marginBottom="40dp"/>
+
+    <Button
+        android:id="@+id/btnIrAlumnos"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="GESTIONAR USUARIOS / ALUMNOS"
+        android:backgroundTint="#660000"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="20dp"
+        app:cornerRadius="12dp"
+        android:onClick="abrirAlumnos" />
+
+    <Button
+        android:id="@+id/btnIrMaterias"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="REGISTRAR MATERIAS"
+        android:backgroundTint="#2E7D32"
+        android:textColor="@android:color/white"
+        app:cornerRadius="12dp"
+        android:onClick="abrirMaterias" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cerrar Sesión"
+        android:layout_marginTop="50dp"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:textColor="#660000"
+        android:onClick="cerrarSesion" />
+
+</LinearLayout>

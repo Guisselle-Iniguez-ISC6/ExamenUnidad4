@@ -1,90 +1,78 @@
 package com.example.examenunidad4;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private EditText etUsuario, etPassLogin;
+    private Spinner spinnerRol;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Enlazamos los componentes
         etUsuario = findViewById(R.id.etUsuario);
         etPassLogin = findViewById(R.id.etPassLogin);
+        spinnerRol = findViewById(R.id.spinnerRol);
     }
 
     public void validarLogin(View v) {
-
         String usuario = etUsuario.getText().toString().trim();
         String password = etPassLogin.getText().toString().trim();
+        String rol = spinnerRol.getSelectedItem().toString();
 
         if (usuario.isEmpty() || password.isEmpty()) {
-
-            Toast.makeText(this, "Completa todos los campos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // CONTAR LETRAS DEL USUARIO
-        int letras = contarLetras(usuario);
-
-        // ADMIN -> SOLO NÚMEROS
-        if (letras == 0) {
-
-            Toast.makeText(this, "Bienvenido Administrador", Toast.LENGTH_SHORT).show();
-
-            Intent intent = new Intent(this, Admin.class);
-            startActivity(intent);
-            finish();
-        }
-
-        // ALUMNO -> 1 LETRA
-        else if (letras == 1) {
-
-            Toast.makeText(this, "Bienvenido Alumno", Toast.LENGTH_SHORT).show();
-
-            Intent intent = new Intent(this, Alumnos.class);
-            startActivity(intent);
-            finish();
-        }
-
-        // DOCENTE -> 2 LETRAS
-        else if (letras == 2) {
-
-            Toast.makeText(this, "Bienvenido Docente", Toast.LENGTH_SHORT).show();
-
-            Intent intent = new Intent(this, Docente.class);
-            startActivity(intent);
-            finish();
-        }
-
-        else {
-
-            Toast.makeText(this, "Usuario inválido", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    // MÉTODO PARA CONTAR LETRAS
-    private int contarLetras(String texto) {
-
-        int letras = 0;
-
-        for (int i = 0; i < texto.length(); i++) {
-
-            char c = texto.charAt(i);
-
-            if (Character.isLetter(c)) {
-                letras++;
+        // El Administrador sigue entrando con clave fija por seguridad inicial
+        if (rol.equals("Administrador")) {
+            if (password.equals("123456")) {
+                startActivity(new Intent(this, MenuAdminActivity.class));
+            } else {
+                Toast.makeText(this, "Clave de Admin incorrecta", Toast.LENGTH_SHORT).show();
             }
+            return;
         }
 
-        return letras;
+        // VALIDACIÓN CONTRA BASE DE DATOS PARA DOCENTE Y ESTUDIANTE
+        AdminSQLite admin = new AdminSQLite(this);
+        SQLiteDatabase bd = admin.getReadableDatabase();
+
+        // Ajustamos el nombre del rol para que coincida con como se guardó en el Registro
+        // Spinner (roles_login): "Estudiante", "Docente"
+        // DB (tipos_usuario): "Alumno", "Maestra/Docente"
+        String rolDB = rol.equals("Estudiante") ? "Alumno" : "Maestra/Docente";
+
+        Cursor fila = bd.rawQuery("SELECT nombre FROM usuarios WHERE nombre=? AND password=? AND tipo=?",
+                new String[]{usuario, password, rolDB});
+
+        if (fila.moveToFirst()) {
+            // Si lo encuentra, navegamos según el rol
+            if (rol.equals("Docente")) {
+                Intent i = new Intent(this, DocenteActivity.class);
+                i.putExtra("nombre_usuario", usuario);
+                startActivity(i);
+            } else {
+                Intent i = new Intent(this, AlumnoActivity.class);
+                i.putExtra("nombre_usuario", usuario);
+                startActivity(i);
+            }
+        } else {
+            Toast.makeText(this, "Usuario, contraseña o rol incorrectos", Toast.LENGTH_SHORT).show();
+        }
+        fila.close();
+        bd.close();
     }
 }

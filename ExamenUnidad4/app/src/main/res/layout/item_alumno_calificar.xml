@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="15dp"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/tvNombreAlumnoItem"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Nombre Alumno"
+        android:textColor="#333333"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/etCalificacionItem"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:hint="0.0"
+        android:inputType="numberDecimal"
+        android:textAlignment="center"
+        android:background="@android:color/white"
+        android:elevation="2dp"
+        android:layout_marginEnd="10dp"/>
+
+    <Button
+        android:id="@+id/btnSubirCal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:backgroundTint="#2E7D32"
+        android:textColor="#FFFFFF"
+        style="@style/Widget.AppCompat.Button.Small"/>
+</LinearLayout>
