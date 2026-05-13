@@ -10,7 +10,6 @@ public class AdminSQLite extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "controlEscolar";
     private static final int DATABASE_VERSION = 1;
 
-    // Constructor simplificado
     public AdminSQLite(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }

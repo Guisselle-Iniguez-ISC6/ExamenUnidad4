@@ -36,7 +36,6 @@ public class CalificarActivity extends AppCompatActivity {
         AdminSQLite admin = new AdminSQLite(this);
         SQLiteDatabase bd = admin.getReadableDatabase();
 
-        // Buscamos alumnos que tengan esta materia en su texto de materias
         Cursor fila = bd.rawQuery("select nombre from usuarios where tipo='Alumno' AND materias LIKE '%" + materiaSeleccionada + "%'", null);
 
         if (fila.moveToFirst()) {

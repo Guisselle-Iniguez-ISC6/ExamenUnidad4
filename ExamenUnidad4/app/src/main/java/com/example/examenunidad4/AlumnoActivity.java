@@ -24,7 +24,6 @@ public class AlumnoActivity extends AppCompatActivity {
         tabla = findViewById(R.id.tablaCalificaciones);
         tvBienvenida = findViewById(R.id.tvBienvenidaAlum);
 
-        // Obtenemos el nombre del alumno que entró desde el login
         nombreAlumno = getIntent().getStringExtra("nombre_usuario");
         tvBienvenida.setText("¡Bienvenido, " + nombreAlumno + "!");
 
@@ -35,7 +34,6 @@ public class AlumnoActivity extends AppCompatActivity {
         AdminSQLite admin = new AdminSQLite(this, "controlEscolar", null, 1);
         SQLiteDatabase bd = admin.getReadableDatabase();
 
-        // 1. Buscamos qué materias tiene inscritas este alumno
         Cursor cursorMaterias = bd.rawQuery("select materias from usuarios where nombre='" + nombreAlumno + "'", null);
 
         if (cursorMaterias.moveToFirst()) {
@@ -44,7 +42,6 @@ public class AlumnoActivity extends AppCompatActivity {
                 String[] listaMaterias = todasLasMaterias.split(", ");
 
                 for (String materia : listaMaterias) {
-                    // 2. Por cada materia, buscamos si el docente ya puso calificación
                     Cursor cCal = bd.rawQuery("select nota from calificaciones where alumno='" + nombreAlumno + "' AND materia='" + materia + "'", null);
 
                     String notaFinal = "0"; // Por defecto 0
@@ -72,7 +69,6 @@ public class AlumnoActivity extends AppCompatActivity {
         TextView tvNota = new TextView(this);
         tvNota.setText(nota);
         tvNota.setGravity(Gravity.CENTER);
-        // Si la nota es mayor a 70, la ponemos en verde, si no en tinto
         try {
             double n = Double.parseDouble(nota);
             tvNota.setTextColor(n >= 70 ? Color.parseColor("#2E7D32") : Color.parseColor("#660000"));

@@ -18,11 +18,7 @@ public class Materias extends AppCompatActivity {
 
     private EditText etNombreMat, etClaveMat;
     private Spinner spinnerDocentes;
-
-    // Lista de nombres para el Spinner
     private ArrayList<String> listaDocentes;
-
-    // Lista de identificadores de docentes (usaremos el nombre como ID)
     private ArrayList<String> listaIdsDocentes;
 
     @Override
@@ -37,7 +33,6 @@ public class Materias extends AppCompatActivity {
         cargarDocentes();
     }
 
-    // CARGAR DOCENTES EN EL SPINNER
     private void cargarDocentes() {
 
         AdminSQLite admin = new AdminSQLite(this);
@@ -46,7 +41,6 @@ public class Materias extends AppCompatActivity {
         listaDocentes = new ArrayList<>();
         listaIdsDocentes = new ArrayList<>();
 
-        // Consulta para obtener los nombres de los docentes
         Cursor fila = bd.rawQuery(
                 "SELECT nombre FROM usuarios WHERE tipo='Maestra/Docente'",
                 null
@@ -56,11 +50,7 @@ public class Materias extends AppCompatActivity {
 
             do {
                 String nombreDocente = fila.getString(0);
-                
-                // GUARDAR NOMBRE COMO IDENTIFICADOR
                 listaIdsDocentes.add(nombreDocente);
-
-                // GUARDAR NOMBRE PARA MOSTRAR
                 listaDocentes.add(nombreDocente);
 
             } while (fila.moveToNext());
@@ -86,7 +76,6 @@ public class Materias extends AppCompatActivity {
         spinnerDocentes.setAdapter(adapter);
     }
 
-    // REGISTRAR MATERIA
     public void registrarMateria(View v) {
 
         String nombre = etNombreMat.getText().toString().trim();
@@ -115,10 +104,7 @@ public class Materias extends AppCompatActivity {
             return;
         }
 
-        // POSICIÓN DEL DOCENTE SELECCIONADO
         int posicion = spinnerDocentes.getSelectedItemPosition();
-
-        // OBTENER IDENTIFICADOR DEL DOCENTE
         String docenteNombre = listaIdsDocentes.get(posicion);
 
         AdminSQLite admin = new AdminSQLite(this);

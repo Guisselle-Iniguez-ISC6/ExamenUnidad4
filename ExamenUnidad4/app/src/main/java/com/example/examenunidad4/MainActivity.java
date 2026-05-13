@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Enlazamos los componentes
         etUsuario = findViewById(R.id.etUsuario);
         etPassLogin = findViewById(R.id.etPassLogin);
         spinnerRol = findViewById(R.id.spinnerRol);
@@ -36,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        // El Administrador sigue entrando con clave fija por seguridad inicial
         if (rol.equals("Administrador")) {
             if (password.equals("123456")) {
                 startActivity(new Intent(this, MenuAdminActivity.class));
@@ -46,20 +44,15 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        // VALIDACIÓN CONTRA BASE DE DATOS PARA DOCENTE Y ESTUDIANTE
         AdminSQLite admin = new AdminSQLite(this);
         SQLiteDatabase bd = admin.getReadableDatabase();
 
-        // Ajustamos el nombre del rol para que coincida con como se guardó en el Registro
-        // Spinner (roles_login): "Estudiante", "Docente"
-        // DB (tipos_usuario): "Alumno", "Maestra/Docente"
         String rolDB = rol.equals("Estudiante") ? "Alumno" : "Maestra/Docente";
 
         Cursor fila = bd.rawQuery("SELECT nombre FROM usuarios WHERE nombre=? AND password=? AND tipo=?",
                 new String[]{usuario, password, rolDB});
 
         if (fila.moveToFirst()) {
-            // Si lo encuentra, navegamos según el rol
             if (rol.equals("Docente")) {
                 Intent i = new Intent(this, DocenteActivity.class);
                 i.putExtra("nombre_usuario", usuario);
