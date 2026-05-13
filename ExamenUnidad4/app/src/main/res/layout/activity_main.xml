@@ -44,24 +44,21 @@
         android:layout_marginBottom="15dp"
         android:entries="@array/roles_login" />
 
-    <!-- CONTENEDOR PARA EL OJITO DE CONTRASEÑA EN LOGIN -->
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="25dp"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleTint="#660000"
-        app:hintEnabled="false">
+        app:endIconMode="password_toggle">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etPassLogin"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="Contraseña"
             android:inputType="textPassword"
             android:background="@android:color/white"
-            android:paddingLeft="15dp"
-            android:elevation="3dp" />
+            android:paddingLeft="15dp"/>
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

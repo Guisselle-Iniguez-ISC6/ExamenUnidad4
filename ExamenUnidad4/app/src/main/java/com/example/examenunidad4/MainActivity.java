@@ -1,6 +1,7 @@
 package com.example.examenunidad4;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -26,45 +27,85 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void validarLogin(View v) {
+
         String usuario = etUsuario.getText().toString().trim();
         String password = etPassLogin.getText().toString().trim();
         String rol = spinnerRol.getSelectedItem().toString();
 
         if (usuario.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show();
+
+            Toast.makeText(this,
+                    "Por favor, completa todos los campos",
+                    Toast.LENGTH_SHORT).show();
+
             return;
         }
 
         if (rol.equals("Administrador")) {
+
             if (password.equals("123456")) {
-                startActivity(new Intent(this, MenuAdminActivity.class));
+
+                startActivity(
+                        new Intent(this,
+                                MenuAdminActivity.class));
+
+                finish();
+
             } else {
-                Toast.makeText(this, "Clave de Admin incorrecta", Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(this,
+                        "Clave de Admin incorrecta",
+                        Toast.LENGTH_SHORT).show();
             }
+
             return;
         }
 
         AdminSQLite admin = new AdminSQLite(this);
         SQLiteDatabase bd = admin.getReadableDatabase();
 
-        String rolDB = rol.equals("Estudiante") ? "Alumno" : "Maestra/Docente";
+        String rolDB = rol.equals("Estudiante")
+                ? "Alumno"
+                : "Maestra/Docente";
 
-        Cursor fila = bd.rawQuery("SELECT nombre FROM usuarios WHERE nombre=? AND password=? AND tipo=?",
+        Cursor fila = bd.rawQuery(
+                "SELECT nombre FROM usuarios WHERE nombre=? AND password=? AND tipo=?",
                 new String[]{usuario, password, rolDB});
 
         if (fila.moveToFirst()) {
+
             if (rol.equals("Docente")) {
-                Intent i = new Intent(this, DocenteActivity.class);
+
+                Intent i = new Intent(
+                        this,
+                        DocenteActivity.class);
+
                 i.putExtra("nombre_usuario", usuario);
+
                 startActivity(i);
+
+                finish();
+
             } else {
-                Intent i = new Intent(this, AlumnoActivity.class);
+
+                Intent i = new Intent(
+                        this,
+                        AlumnoActivity.class);
+
                 i.putExtra("nombre_usuario", usuario);
+
                 startActivity(i);
+
+                finish();
             }
+
         } else {
-            Toast.makeText(this, "Usuario, contraseña o rol incorrectos", Toast.LENGTH_SHORT).show();
+
+            Toast.makeText(this,
+                    "Usuario, contraseña o rol incorrectos",
+                    Toast.LENGTH_SHORT).show();
         }
+
         fila.close();
         bd.close();
     }
